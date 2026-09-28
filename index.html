@@ -17,8 +17,132 @@
          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
        }).addTo(map);
 
-       var marker = L.marker([49.9667, 14.517]).addTo(map);
-       marker.bindPopup("<b>Tady se chceme dostat na radnici!</b>");
+       const data = {
+         "type": "FeatureCollection",
+         "features": [
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.524728, 49.984248]
+             },
+             "properties": {
+               "title": "Chodník u ZŠ Zdiměřice",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3645838308915816%2F&show_text=true&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.519897, 49.991463]
+             },
+             "properties": {
+               "title": "Vestecká spojka",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1396953721883785%2F&show_text=true&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.518384, 49.967064]
+             },
+             "properties": {
+               "title": "Gymnázium",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1396976962565725%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.507580, 49.970490]
+             },
+             "properties": {
+               "title": "Ústí ulice V Lukách",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1347836504089224%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.510823, 49.972088]
+             },
+             "properties": {
+               "title": "Toalety u Pančáku",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1330309109091870%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.510397, 49.970982]
+             },
+             "properties": {
+               "title": "Biotop",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1342119844747669%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.522751, 49.974810]
+             },
+             "properties": {
+               "title": "Stromy v ulicích",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1752796022415893%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.541344, 49.971089]
+             },
+             "properties": {
+               "title": "Lavičky na Kocandě",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F28163923136526710%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.539386, 49.979274]
+             },
+             "properties": {
+               "title": "Stromy pro stín",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1828313971885204%2F&show_text=false&width=267&t=0"
+             }
+           },
+           {
+             "type": "Feature",
+             "geometry": {
+               "type": "Point",
+               "coordinates": [14.512618, 49.968241]
+             },
+             "properties": {
+               "title": "Vodní prvky",
+               "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1001427072760870%2F&show_text=false&width=267&t=0"
+             }
+           }
+         ]
+       };
+
+       L.geoJSON(data, {
+         onEachFeature: (feature, layer) => {
+           const p = feature.properties;
+
+           layer.bindPopup(`
+             <h3>${p.title}</h3>
+             <iframe src="${p.link}" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true" loading="lazy"></iframe>
+           `);
+         }
+       }).addTo(map);
      </script>
   </body>
 </html>
